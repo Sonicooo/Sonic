@@ -1649,7 +1649,14 @@ GM_Sega:				; XREF: GameModeArray
 
 	@loadpal:
 		moveq	#palid_SegaBG,d0
+	if SegaFadeIn=1
+		move.b	#2,(v_vbla_routine).w
+		bsr.w	WaitForVBla
+		bsr.w	PalLoad1	; load Sega logo palette
+		bsr.w	PaletteFadeIn
+	else
 		bsr.w	PalLoad2	; load Sega logo palette
+	endc
 		move.w	#-$A,(v_pcyc_num).w
 		move.w	#0,(v_pcyc_time).w
 		move.w	#0,(v_pal_buffer+$12).w
@@ -2508,9 +2515,9 @@ GetMusicList:
 		even
 @act2:		dc.b bgm_GHZ, bgm_LZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_SBZ
 		even
-@act3:		dc.b bgm_GHZ, bgm_LZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_FZ	; SBZ3 is actually FZ
+@act3:		dc.b bgm_GHZ, bgm_LZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_FZ	; SBZ3 is FZ
 		even
-@act4:		dc.b bgm_GHZ, bgm_SBZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_SBZ	; LZ4 is actually SBZ3
+@act4:		dc.b bgm_GHZ, bgm_SBZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_SBZ	; LZ4 is SBZ3
 		even
 	else
 MusicList:	dc.b bgm_GHZ, bgm_LZ, bgm_MZ, bgm_SLZ, bgm_SYZ, bgm_SBZ, bgm_FZ

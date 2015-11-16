@@ -52,9 +52,6 @@ Deform_Index:	dc.w Deform_GHZ-Deform_Index, Deform_LZ-Deform_Index
 
 Deform_GHZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#5,d4
 		move.l	d4,d1
@@ -63,9 +60,6 @@ Deform_GHZ:				; XREF: Deform_Index
 		moveq	#0,d6
 		bsr	ScrollBlock5
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		moveq	#0,d6
@@ -160,9 +154,6 @@ loc_63A4:
 
 Deform_LZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		move.w	($FFFFF73C).w,d5
@@ -240,9 +231,6 @@ Lz_Scroll_Data:
 
 Deform_MZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		move.l	d4,d1
@@ -251,17 +239,11 @@ Deform_MZ:				; XREF: Deform_Index
 		moveq	#2,d6
 		bsr	ScrollBlock3
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		moveq	#6,d6
 		bsr	ScrollBlock5
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		moveq	#4,d6
@@ -525,25 +507,16 @@ Deform_SBZ:				; XREF: Deform_Index
 		tst.b	(v_act).w
 		bne	Bg_Scroll_SBz_2
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		moveq	#2,d6
 		bsr	ScrollBlock3
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		moveq	#6,d6
 		bsr	ScrollBlock5
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#5,d4
 		move.l	d4,d1
@@ -615,9 +588,6 @@ loc_6884:
 ;-------------------------------------------------------------------------------
 Bg_Scroll_SBz_2:;loc_68A2:
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4		
 		asl.l	#6,d4
 		move.w	($FFFFF73C).w,d5
@@ -1077,15 +1047,3 @@ loc_6C28:
 		bset	d6,($FFFFF75A).w
 loc_6C2E:
 		rts
-		
-	if DontFreezeOnDeath=1
-StopIfDead:
-		cmpi.b	#$6,(v_player+obRoutine).w	; is Sonic dead?
-		bcc.s	@dead	; if yes, branch
-		cmpi.b	#$A,(v_player+obRoutine).w	; has Sonic drowned?
-		bcc.s	@dead	; if yes, branch
-		rts
-	@dead:
-		moveq	#0,d4
-		rts
-	endc

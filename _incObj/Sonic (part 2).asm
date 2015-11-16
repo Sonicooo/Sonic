@@ -65,7 +65,7 @@ locret_13860:
 Sonic_Death:	; Routine 6
 
 	if DontFreezeOnDeath=1
-		move.b	#1,(f_lockscreen)	; prevent screen from moving
+		clr.w	(v_scrshiftx).w
 		clr.b	(v_invinc).w
 		clr.b	(v_shield).w
 	endc

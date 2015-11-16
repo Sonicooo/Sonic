@@ -56,9 +56,6 @@ Deform_Index:	dc.w Deform_GHZ-Deform_Index, Deform_LZ-Deform_Index
 
 Deform_GHZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#5,d4
 		move.l	d4,d1
@@ -135,9 +132,6 @@ loc_6384:
 
 Deform_LZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		move.w	($FFFFF73C).w,d5
@@ -170,9 +164,6 @@ loc_63C6:
 
 Deform_MZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		move.l	d4,d1
@@ -217,9 +208,6 @@ loc_6426:
 
 Deform_SLZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#7,d4
 		move.w	($FFFFF73C).w,d5
@@ -330,9 +318,6 @@ loc_64FE:
 
 Deform_SYZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		move.w	($FFFFF73C).w,d5
@@ -366,9 +351,6 @@ loc_653C:
 
 Deform_SBZ:				; XREF: Deform_Index
 		move.w	(v_scrshiftx).w,d4
-	if DontFreezeOnDeath=1
-		bsr.w	StopIfDead
-	endc
 		ext.l	d4
 		asl.l	#6,d4
 		move.w	($FFFFF73C).w,d5
@@ -807,15 +789,3 @@ loc_687E:
 locret_6884:
 		rts	
 ; End of function ScrollBlock4
-
-	if DontFreezeOnDeath=1
-StopIfDead:
-		cmpi.b	#$6,(v_player+obRoutine).w	; is Sonic dead?
-		bcc.s	@dead	; if yes, branch
-		cmpi.b	#$A,(v_player+obRoutine).w	; has Sonic drowned?
-		bcc.s	@dead	; if yes, branch
-		rts
-	@dead:
-		moveq	#0,d4
-		rts
-	endc

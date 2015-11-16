@@ -420,8 +420,13 @@ ImprovedDec: = 1
 
 ; Name: Disable Waterfall Sound
 ; Function: Disables the GHZ waterfall sound.
-; Date: 2015-11-15
+; Date: 2015-11-15 (Nov)
 NoWaterfallSound: = 0
+
+; Name: Sega Screen Fade In
+; Function: Makes the Sega screen background fade in.
+; Date: 2015-11-16 (Nov)
+SegaFadeIn: = 1
 
 LogROMSize: = 0	; logs ROM size for debugging purposes
 

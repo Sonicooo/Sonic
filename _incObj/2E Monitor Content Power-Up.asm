@@ -137,7 +137,7 @@ Pow_ChkRings:
 		addi.w	#10,(v_rings).w	; add 10 rings to the number of rings you have
 	if RingCap=1
 		cmpi.w	#999,(v_rings).w	; do you have more than 999 rings?
-		ble.s	@ringok	; if not, branch
+		bcs.s	@ringok	; if not, branch
 		move.w	#999,(v_rings).w	; reset counter to 999 rings
 	@ringok:
 	endc

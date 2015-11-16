@@ -232,7 +232,7 @@ CollectRing:				; XREF: Ring_Collect
 		addq.w	#1,(v_rings).w	; add 1 to rings
 	if RingCap=1
 		cmpi.w	#999,(v_rings).w	; do you have more than 999 rings?
-		ble.s	@ringok	; if not, branch
+		bcs.s	@ringok	; if not, branch
 		move.w	#999,(v_rings).w	; reset counter to 999 rings
 	@ringok:
 	endc
