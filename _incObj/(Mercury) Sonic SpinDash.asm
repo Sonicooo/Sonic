@@ -11,7 +11,7 @@ Sonic_SpinDash:
 	if SpinDashDustActive=1	;Mercury Spin Dash Dust
 		if SpinDashNoDustUnderwater=1
 		btst	#staWater,obStatus(a0)	; is player underwater?
-		bne.s	@nodust	; if so, branch
+		bne.s	@nodust	; if yes, branch
 		endc
 		move.b	#1,(v_objspace+$1C0+obAnim).w
 		move.b	#0,(v_objspace+$1C0+obTimeFrame).w
@@ -31,6 +31,11 @@ Sonic_SpinDash:
 		clr.b	(v_spindashsfx2).w
 		clr.b	(v_spindashsfx3).w
 	endc
+	
+	if SpinDashCameraLag=1	;Mercury Spin Dash Camera Lag
+		clr.b	(v_cameralag).w
+	endc	;end Spin Dash Camera Lag
+	
 		move.w	#sfx_SpinDash,d0
 		jsr	(PlaySound_Special).l
 		addq.l	#4,sp
