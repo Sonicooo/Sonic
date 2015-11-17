@@ -64,6 +64,10 @@ loc_1AC8E:
 		add.w	d0,d0
 		move.w	#1,obVelX(a0)	; force X speed to nonzero for camera lag's benefit
 		move.w	SpinDashSpeeds(pc,d0.w),obInertia(a0)
+		;tst.b	(f_super).w	; is super mode on?
+		;beq.s	@notsuper	; if not, branch
+		;move.w	SuperSpinDashSpeeds(pc,d0.w),obInertia(a0)
+	;@notsuper:
 		
 	if SpinDashCameraLag=1	;Mercury Spin Dash Camera Lag
 		move.b	obInertia(a0),d0
@@ -95,6 +99,15 @@ SpinDashSpeeds:	dc.w  $800		; 0
 		dc.w  $B00		; 6
 		dc.w  $B80		; 7
 		dc.w  $C00		; 8
+;SuperSpinDashSpeeds:dc.w  $B00		; 0
+;		dc.w  $B80		; 1
+;		dc.w  $C00		; 2
+;		dc.w  $C80		; 3
+;		dc.w  $D00		; 4
+;		dc.w  $D80		; 5
+;		dc.w  $E00		; 6
+;;		dc.w  $E80		; 7
+		dc.w  $F00		; 8
 ; ---------------------------------------------------------------------------
  
 loc_1AD30:				; If still charging the dash...

@@ -1650,8 +1650,6 @@ GM_Sega:				; XREF: GameModeArray
 	@loadpal:
 		moveq	#palid_SegaBG,d0
 	if SegaFadeIn=1
-		move.b	#2,(v_vbla_routine).w
-		bsr.w	WaitForVBla
 		bsr.w	PalLoad1	; load Sega logo palette
 		bsr.w	PaletteFadeIn
 	else
