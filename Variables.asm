@@ -130,7 +130,7 @@ v_sonspeedacc:	= $FFFFF762	; Sonic's acceleration (2 bytes)
 v_sonspeeddec:	= $FFFFF764	; Sonic's deceleration (2 bytes)
 v_sonframenum:	= $FFFFF766	; frame to display for Sonic
 f_sonframechg:	= $FFFFF767	; flag set to update Sonic's sprite frame
-v_anglebuffer:	= $FFFFF768	; angle of collision block that Sonic or object is standing on
+v_anglebuffer:	= v_anglebuffer	; angle of collision block that Sonic or object is standing on
 
 v_opl_routine:	= $FFFFF76C	; ObjPosLoad - routine counter
 v_opl_screen:	= $FFFFF76E	; ObjPosLoad - screen variable
@@ -224,22 +224,7 @@ v_shield:	= $FFFFFE2C	; shield status (00 = no; 01 = yes)
 v_invinc:	= $FFFFFE2D	; invinciblity status (00 = no; 01 = yes)
 v_shoes:	= $FFFFFE2E	; speed shoes status (00 = no; 01 = yes)
 v_lastlamp:	= $FFFFFE30	; number of the last lamppost you hit
-v_lastlamp_dupe:= v_lastlamp+1	; duplicate of v_lastlamp
-v_lamp_xpos:	= v_lastlamp+2	; x-axis for Sonic to respawn at lamppost (2 bytes)
-v_lamp_ypos:	= v_lastlamp+4	; y-axis for Sonic to respawn at lamppost (2 bytes)
-v_lamp_rings:	= v_lastlamp+6	; rings stored at lamppost (2 bytes)
-v_lamp_time:	= v_lastlamp+8	; time stored at lamppost (2 bytes)
-v_lamp_dle:	= v_lastlamp+$C	; dynamic level event routine counter at lamppost
-v_lamp_limitbtm:= v_lastlamp+$E	; level bottom boundary at lamppost (2 bytes)
-v_lamp_scrx:	= v_lastlamp+$10 ; x-axis screen at lamppost (2 bytes)
-v_lamp_scry:	= v_lastlamp+$12 ; y-axis screen at lamppost (2 bytes)
 
-v_lamp_bgpos:	= v_lastlamp+$14 ; bg position at lamppost ($C bytes)
-
-v_lamp_wtrpos:	= v_lastlamp+$20 ; water position at lamppost (2 bytes)
-v_lamp_wtrrout:	= v_lastlamp+$22 ; water routine at lamppost
-v_lamp_wtrstat:	= v_lastlamp+$23 ; water state at lamppost
-v_lamp_lives:	= v_lastlamp+$24 ; lives counter at lamppost
 v_emeralds:	= $FFFFFE57	; number of chaos emeralds
 v_emldlist:	= $FFFFFE58	; which individual emeralds you have (00 = no; 01 = yes) (6 bytes)
 v_oscillate:	= $FFFFFE5E	; values which oscillate - for swinging platforms, et al ($42 bytes)

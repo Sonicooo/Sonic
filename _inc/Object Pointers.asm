@@ -22,7 +22,11 @@ ptr_FlapDoor:		dc.l FlapDoor
 ptr_Signpost:		dc.l Signpost
 ptr_TitleSonic:		dc.l TitleSonic
 ptr_PSBTM:		dc.l PSBTM
+	if (RingsFromEnemies|RingsFromMonitors)=1
+ptr_RingBounce:		dc.l RingBounce		; $10
+	else
 ptr_Obj10:		dc.l Obj10		; $10
+	endc
 ptr_Bridge:		dc.l Bridge
 ptr_SpinningLight:	dc.l SpinningLight
 ptr_LavaMaker:		dc.l LavaMaker
@@ -173,7 +177,11 @@ id_FlapDoor:		equ ((ptr_FlapDoor-Obj_Index)/4)+1
 id_Signpost:		equ ((ptr_Signpost-Obj_Index)/4)+1
 id_TitleSonic:		equ ((ptr_TitleSonic-Obj_Index)/4)+1
 id_PSBTM:		equ ((ptr_PSBTM-Obj_Index)/4)+1
+	if (RingsFromEnemies|RingsFromMonitors)=1
+id_RingBounce:		equ ((ptr_RingBounce-Obj_Index)/4)+1		; $10
+	else
 id_Obj10:		equ ((ptr_Obj10-Obj_Index)/4)+1			; $10
+	endc
 id_Bridge:		equ ((ptr_Bridge-Obj_Index)/4)+1
 id_SpinningLight:	equ ((ptr_SpinningLight-Obj_Index)/4)+1
 id_LavaMaker:		equ ((ptr_LavaMaker-Obj_Index)/4)+1

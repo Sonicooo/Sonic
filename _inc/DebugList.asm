@@ -182,8 +182,8 @@ dbug:	macro map,object,subtype,frame,vram
 	dc.w (@Endingend-@Ending-2)/8
 
 ;		mappings	object		subtype	frame	VRAM setting
-	dbug	Map_Ring,	id_Obj10,	0,	0,	$27B2
-	dbug	Map_Ring,	id_Obj10,	0,	0,	$27B2
+	dbug	Map_Ring,	id_Obj19,	0,	0,	$27B2
+	dbug	Map_Ring,	id_Obj19,	0,	0,	$27B2
 	@Endingend:
 	
 	even

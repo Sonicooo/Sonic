@@ -38,7 +38,7 @@ Bump_Hit:	; Routine 2
 		muls.w	#-$700,d0
 		asr.l	#8,d0
 		move.w	d0,obVelY(a1)	; bounce Sonic away
-		bset	#1,obStatus(a1)
+		bset	#staAir,obStatus(a1)
 		
 	if SonicCDRollJump=0	;Mercury Sonic CD Roll Jump
 		bclr	#staRollJump,obStatus(a1)	;Mercury Constants

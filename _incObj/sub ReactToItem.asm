@@ -231,6 +231,19 @@ React_Enemy:
 		bsr.w	AddPoints
 		move.b	#id_ExplosionItem,0(a1) ; change object to explosion
 		move.b	#0,obRoutine(a1)
+	if RingsFromEnemies=1
+		move.l	a1,a2
+		jsr	FindFreeObj
+		bne.s	@norings
+		move.l	a1,a3
+		move.b	#id_RingBounce,0(a3) ; load bouncing multi rings object
+		move.w	#1,obInertia(a3)
+		move.w	obX(a2),obX(a3)
+		move.w	obY(a2),obY(a3)
+		move.w	#$10,obVelY(a3)
+	@norings:
+		move.l	a2,a1
+	endc
 		tst.w	obVelY(a0)
 		bmi.s	@bouncedown
 		move.w	obY(a0),d0

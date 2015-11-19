@@ -6,10 +6,10 @@
 ; thanks to drx, Stealth and Esrael L.G. Neto
 ; ReadySonic modifications by Mercury
 
-	include	"(Mercury) Fixes.asm"	;Mercury Fix List
 	include	"Variables.asm"
 	include	"Constants.asm"
 	include	"Macros.asm"
+	include	"(Mercury) Fixes.asm"	;Mercury Fix List
 
 ; ===========================================================================
 	
@@ -6763,8 +6763,8 @@ loc_12C7E:
 		bsr.s	Sonic_Display
 		bsr.w	Sonic_RecordPosition
 		bsr.w	Sonic_Water
-		move.b	(v_anglebuffer).w,$36(a0)
-		move.b	($FFFFF76A).w,$37(a0)
+		move.b	(v_anglebuffer).w,obFrontAngle(a0)
+		move.b	(v_anglebuffer_r).w,obRearAngle(a0)
 		tst.b	(f_wtunnelmode).w
 		beq.s	loc_12CA6
 		tst.b	obAnim(a0)
@@ -6797,7 +6797,7 @@ Sonic_Modes:	dc.w Sonic_MdNormal-Sonic_Modes
 ; ---------------------------------------------------------------------------
 
 Sonic_MdNormal:				; XREF: Sonic_Modes
-
+	
 	if DashCDActive=1 ;Mercury Dash CD
 		bsr.w	Sonic_Dash
 	endc	;end Dash CD
@@ -6826,6 +6826,10 @@ Sonic_MdJump:				; XREF: Sonic_Modes
 	if SpinDashActive=1	;Mercury Spin Dash
 		bclr	#staSpinDash,obStatus2(a0)	; clear Spin Dash flag
 	endc	;end Spin Dash
+	
+	if MidairRollActive=1
+		bsr.w	Sonic_MidAirRoll
+	endc
 
 		bsr.w	Sonic_JumpHeight
 		bsr.w	Sonic_JumpDirection
@@ -6941,6 +6945,11 @@ locret_13302:
 		include	"_incObj\Sonic Loops.asm"
 		include	"_incObj\Sonic Drowns.asm"
 		include	"_incObj\Sonic Animate.asm"
+		
+	if MidairRollActive=1
+		include	"_incObj\Sonic Midair Roll.asm"
+	endc
+	
 		include	"_anim\Sonic.asm"
 		
 	if UseDMAQueue=1	;Mercury Use DMA Queue
@@ -7040,7 +7049,7 @@ Sonic_WalkSpeed:			; XREF: Sonic_Move
 		swap	d2
 		swap	d3
 		move.b	d0,(v_anglebuffer).w
-		move.b	d0,($FFFFF76A).w
+		move.b	d0,(v_anglebuffer_r).w
 		move.b	d0,d1
 		addi.b	#$20,d0
 		bpl.s	loc_14D1A
@@ -7083,7 +7092,7 @@ loc_14D3C:
 
 sub_14D48:				; XREF: Sonic_Jump
 		move.b	d0,(v_anglebuffer).w
-		move.b	d0,($FFFFF76A).w
+		move.b	d0,(v_anglebuffer_r).w
 		addi.b	#$20,d0
 		andi.b	#$C0,d0
 		cmpi.b	#$40,d0
@@ -7127,7 +7136,7 @@ Sonic_HitFloor:				; XREF: Sonic_Floor
 		move.b	obWidth(a0),d0
 		ext.w	d0
 		sub.w	d0,d3
-		lea	($FFFFF76A).w,a4
+		lea	(v_anglebuffer_r).w,a4
 		movea.w	#$10,a3
 		move.w	#0,d6
 		moveq	#$D,d5
@@ -7136,7 +7145,7 @@ Sonic_HitFloor:				; XREF: Sonic_Floor
 		move.b	#0,d2
 
 loc_14DD0:
-		move.b	($FFFFF76A).w,d3
+		move.b	(v_anglebuffer_r).w,d3
 		cmp.w	d0,d1
 		ble.s	loc_14DDE
 		move.b	(v_anglebuffer).w,d3
@@ -7205,7 +7214,7 @@ sub_14E50:				; XREF: sub_14D48
 		move.b	obHeight(a0),d0
 		ext.w	d0
 		add.w	d0,d3
-		lea	($FFFFF76A).w,a4
+		lea	(v_anglebuffer_r).w,a4
 		movea.w	#$10,a3
 		move.w	#0,d6
 		moveq	#$E,d5
@@ -7297,7 +7306,7 @@ Sonic_DontRunOnWalls:			; XREF: Sonic_Floor; et al
 		move.b	obWidth(a0),d0
 		ext.w	d0
 		sub.w	d0,d3
-		lea	($FFFFF76A).w,a4
+		lea	(v_anglebuffer_r).w,a4
 		movea.w	#-$10,a3
 		move.w	#$1000,d6
 		moveq	#$E,d5
@@ -7376,7 +7385,7 @@ loc_14FD6:				; XREF: sub_14D48
 		ext.w	d0
 		sub.w	d0,d3
 		eori.w	#$F,d3
-		lea	($FFFFF76A).w,a4
+		lea	(v_anglebuffer_r).w,a4
 		movea.w	#-$10,a3
 		move.w	#$800,d6
 		moveq	#$E,d5
@@ -8203,7 +8212,11 @@ SS_MapIndex:
 
 		include	"_incObj\09 Sonic in Special Stage.asm"
 
+	if (RingsFromEnemies|RingsFromMonitors)=1
+		include	"_incObj\10 Rings Bouncing.asm"
+	else
 		include	"_incObj\10.asm"
+	endc
 
 		include	"_inc\AnimateLevelGfx.asm"
 

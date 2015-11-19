@@ -158,6 +158,21 @@ Mon_Explode:
 		move.w	obY(a0),obY(a1)
 
 	@fail:
+	if RingsFromEnemies=1
+		bsr.w	FindFreeObj
+		bne.s	@norings
+		move.b	#id_RingBounce,0(a1) ; load bouncing multi rings object
+		moveq	#1,d6
+		cmpi.b	#6,obAnim(a0)	; is this a ring monitor?
+		bne.s	@single	; if not, branch
+		moveq	#3,d6
+	@single:
+		move.w	d6,obInertia(a1)
+		move.w	obX(a0),obX(a1)
+		move.w	obY(a0),obY(a1)
+		move.w	#$10,obVelY(a1)
+	@norings:
+	endc
 		lea	(v_objstate).w,a2
 		moveq	#0,d0
 		move.b	obRespawnNo(a0),d0
