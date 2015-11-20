@@ -4,6 +4,7 @@
 
 DebugMode:				; XREF: SonicPlayer; SpecialPlayer
 		bclr	#staWater,obStatus(a0)
+		move.b	#0,obRoutine(a0)	; reset Sonic's routine
 
 	if DashCDActive=1 ;Mercury Dash CD
 		bclr	#staDash,obStatus2(a0)	; clear Dash flag

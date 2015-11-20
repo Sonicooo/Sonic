@@ -1,14 +1,13 @@
 <NotepadPlus>
     <Session activeView="0">
         <mainView activeIndex="0">
-            <File firstVisibleLine="1804" xOffset="0" scrollWidth="816" startPos="47607" endPos="47607" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\sonic.asm" backupFilePath="" originalFileLastModifTimestamp="1447943572" />
+            <File firstVisibleLine="1804" xOffset="0" scrollWidth="816" startPos="47607" endPos="47607" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\sonic.asm" backupFilePath="" originalFileLastModifTimestamp="1448022927" />
             <File firstVisibleLine="0" xOffset="0" scrollWidth="616" startPos="0" endPos="0" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\s1.sounddriver.asm" backupFilePath="" originalFileLastModifTimestamp="1447935136" />
-            <File firstVisibleLine="424" xOffset="0" scrollWidth="2288" startPos="33043" endPos="33043" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\(Mercury) Fixes.asm" backupFilePath="" originalFileLastModifTimestamp="1447937680" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="808" startPos="1156" endPos="1156" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\Variables.asm" backupFilePath="" originalFileLastModifTimestamp="1447934890" />
+            <File firstVisibleLine="424" xOffset="0" scrollWidth="2288" startPos="33043" endPos="33043" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\(Mercury) Fixes.asm" backupFilePath="" originalFileLastModifTimestamp="1448018022" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="808" startPos="1156" endPos="1156" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\Variables.asm" backupFilePath="" originalFileLastModifTimestamp="1448018102" />
             <File firstVisibleLine="99" xOffset="0" scrollWidth="616" startPos="3572" endPos="3572" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\Constants.asm" backupFilePath="" originalFileLastModifTimestamp="1447697264" />
             <File firstVisibleLine="36" xOffset="0" scrollWidth="672" startPos="1330" endPos="1343" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\Macros.asm" backupFilePath="" originalFileLastModifTimestamp="1447935164" />
-            <File firstVisibleLine="0" xOffset="0" scrollWidth="1120" startPos="0" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\sonic.log" backupFilePath="" originalFileLastModifTimestamp="1447943575" />
-            <File firstVisibleLine="3" xOffset="0" scrollWidth="616" startPos="1007" endPos="1023" selMode="0" lang="68k ASM" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\_incObj\sub PlaySound.asm" backupFilePath="" originalFileLastModifTimestamp="1447573726" />
+            <File firstVisibleLine="0" xOffset="0" scrollWidth="1120" startPos="0" endPos="0" selMode="0" lang="Normal Text" encoding="-1" filename="C:\Users\kfir4\Documents\Sonic Hacks\ReadySonic\sonic.log" backupFilePath="" originalFileLastModifTimestamp="1448028017" />
         </mainView>
         <subView activeIndex="0" />
     </Session>
