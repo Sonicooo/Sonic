@@ -130,7 +130,7 @@ v_sonspeedacc:	= $FFFFF762	; Sonic's acceleration (2 bytes)
 v_sonspeeddec:	= $FFFFF764	; Sonic's deceleration (2 bytes)
 v_sonframenum:	= $FFFFF766	; frame to display for Sonic
 f_sonframechg:	= $FFFFF767	; flag set to update Sonic's sprite frame
-v_anglebuffer:	= v_anglebuffer	; angle of collision block that Sonic or object is standing on
+v_anglebuffer:	= $FFFFF768	; angle of collision block that Sonic or object is standing on
 
 v_opl_routine:	= $FFFFF76C	; ObjPosLoad - routine counter
 v_opl_screen:	= $FFFFF76E	; ObjPosLoad - screen variable

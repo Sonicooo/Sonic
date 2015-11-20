@@ -402,8 +402,8 @@ RLoss_Bounce:	; Routine 2
 
 	@chkdel:
 	if FixedRingTimers=1
-		subq.b  #1,obDelayAni(a0)       ; Subtract 1
-                beq.w   DeleteObject            ; If 0, delete
+		subq.b  #1,obDelayAni(a0)	; Subtract 1
+                beq.w   RLoss_Delete	; If 0, delete
 	else
 		tst.b	(v_ani3_time).w
 		beq.w	RLoss_Delete

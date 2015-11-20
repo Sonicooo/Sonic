@@ -2038,7 +2038,7 @@ LevelSelect:
 		bne.s	LevelSelect
 		move.w	(v_levselitem).w,d0
 		cmpi.w	#$14,d0		; have you selected item $14 (sound test)?
-		bne.s	LevSelLevCheckStart; if not, go to Level/SS subroutine
+		bne.s	LevSelLevCheckStart	; if not, go to Level/SS subroutine
 		cmpi.b	#btnStart,(v_jpadpress1).w ; is Start pressed?
 		beq.s	LevSelStartPress	; if true, branch
 	if SndTstAScroll=1
@@ -2484,7 +2484,7 @@ LevSel_ChgLine:				; XREF: LevSelTextLoad
 LevelMenuText:	incbin	"misc\Level Select Text.bin"
 		even
 	if LevSelHeader=1
-LevelMenuHeader:dc.b	$FF, $0C, $0C, $FF, $FF, $1C, $15, $26, $15, $1C, $FF, $FF, $23, $15, $1C, $15, $13, $24, $FF, $FF, $0C, $0C, $FF, $FF
+LevelMenuHeader:dc.b	$FF, $0A, $0A, $FF, $FF, $1C, $15, $26, $15, $1C, $FF, $FF, $23, $15, $1C, $15, $13, $24, $FF, $FF, $0A, $0A, $FF, $FF
 		even
 	endc
 ; ---------------------------------------------------------------------------

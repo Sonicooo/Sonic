@@ -18,8 +18,7 @@ RBounce_Index:	dc.w RBounce_Count-RBounce_Index
 RBounce_Count:	; Routine 0
 		movea.l	a0,a1
 		moveq	#0,d5
-		move.w	obInertia(a1),d5	; number of rings to drop
-		move.w	d5,d0
+		move.w	obInertia(a1),d5	; check number of rings you have
 		subq.w	#1,d5
 		move.w	#$288,d4
 		bra.s	@makerings
@@ -30,7 +29,7 @@ RBounce_Count:	; Routine 0
 		bne.w	@resetcounter
 
 @makerings:
-		move.b	#id_RingBounce,0(a1) ; load bouncing ring object
+		move.b	#id_RingLoss,0(a1) ; load bouncing ring object
 		addq.b	#2,obRoutine(a1)
 		move.b	#8,obHeight(a1)
 		move.b	#8,obWidth(a1)
@@ -40,7 +39,7 @@ RBounce_Count:	; Routine 0
 		move.w	#$27B2,obGfx(a1)
 		move.b	#4,obRender(a1)
 		move.b	#3,obPriority(a1)
-		move.b	#$47,obColType(a0)
+		move.b	#$47,obColType(a1)
 		move.b	#8,obActWid(a1)
 	if FixedRingTimers=0
 		move.b	#-1,(v_ani3_time).w
@@ -57,8 +56,8 @@ RBounce_Count:	; Routine 0
 		move.w	(v_waterpos1).w,d6	; Move water level to d6
 		cmp.w	obY(a0),d6		; Is the ring object underneath the water level?
 		bgt.s	@skiphalvingvel		; If not, branch and skip underwater commands
-		asr.w	d0			; Half d0. Makes the ring's obVelX bounce to the left/right slower
-		asr.w	d1			; Half d1. Makes the ring's obVelY bounce up/down slower
+		asr.w	d0			; Half d0. Makes the ring's x_vel bounce to the left/right slower
+		asr.w	d1			; Half d1. Makes the ring's y_vel bounce up/down slower
 @skiphalvingvel:
 	endc
 		asl.w	d2,d0
@@ -79,12 +78,12 @@ RBounce_Count:	; Routine 0
 		dbf	d5,@loop	; repeat for number of rings (max 31)
 
 @resetcounter:
-		move.b	#$80,(f_ringcount).w ; update ring counter
-		move.b	#0,(v_lifecount).w
 	if FixedRingTimers=1
 		moveq   #-1,d0                  ; Move #-1 to d0
                 move.b  d0,obDelayAni(a0)       ; Move d0 to new timer
 		move.b	d0,(v_ani3_time).w	; Move d0 to old timer (for animated purposes)
+	else
+		nop
 	endc
 
 RBounce_Bounce:	; Routine 2
@@ -138,7 +137,7 @@ RBounce_Bounce:	; Routine 2
 		
 	if RingsBounceAtZoneBottom=0 ;Mercury Rings Bounce At Zone Bottom
 		cmpi.w	#$FF00,(v_limittop2).w		; is vertical wrapping enabled?
-		beq.w	RBounce_Display			; if yes, branch
+		beq.w	RBounce_Display			; if so, branch
 		move.w	(v_limitbtm2).w,d0
 		addi.w	#$E0,d0
 		cmp.w	obY(a0),d0	; has object moved below level boundary?
