@@ -43,6 +43,13 @@ Sonic_HurtStop:				; XREF: Sonic_Hurt
 		;bcs.w	KillSonic
 	;end Top Boundary Fix
 	
+		tst.w	(f_debugmode).w	; is debug cheat enabled?
+		beq.s	@cont	; if not, branch
+		btst	#bitB,(v_jpadpress1).w ; is button B pressed?
+		beq.s	@cont	; if not, branch
+		move.w	#1,(v_debuguse).w ; change Sonic into a ring/item
+		clr.b	(f_lockctrl).w
+	@cont:
 		bsr.w	Sonic_Floor
 		btst	#staAir,obStatus(a0)	;Mercury Constants
 		bne.s	locret_13860

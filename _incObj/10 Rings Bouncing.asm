@@ -18,7 +18,7 @@ RBounce_Index:	dc.w RBounce_Count-RBounce_Index
 RBounce_Count:	; Routine 0
 		movea.l	a0,a1
 		moveq	#0,d5
-		move.w	obInertia(a1),d5	; check number of rings you have
+		move.w	obInertia(a1),d5	; number of rings to drop
 		subq.w	#1,d5
 		move.w	#$288,d4
 		bra.s	@makerings

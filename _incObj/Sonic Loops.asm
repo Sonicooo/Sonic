@@ -6,9 +6,9 @@
 
 
 Sonic_Loops:				; XREF: Obj01_Control
-		cmpi.b	#id_SLZ,(v_zone).w ; is level SLZ ?
+		cmpi.b	#id_SLZ,(v_zone).w ; is level SLZ?
 		beq.s	@isstarlight	; if yes, branch
-		tst.b	(v_zone).w	; is level GHZ ?
+		tst.b	(v_zone).w	; is level GHZ?
 		bne.w	@noloops	; if not, branch
 
 	@isstarlight:
@@ -35,7 +35,7 @@ Sonic_Loops:				; XREF: Obj01_Control
 ; ===========================================================================
 
 @chkifinair:
-		btst	#1,obStatus(a0)	; is Sonic in the air?
+		btst	#staAir,obStatus(a0)	; is Sonic in the air?
 		beq.s	@chkifleft	; if not, branch
 
 		bclr	#6,obRender(a0)	; return Sonic to high plane

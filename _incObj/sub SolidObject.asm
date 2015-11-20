@@ -17,7 +17,7 @@ SolidObject:
 		move.w	d1,d2
 		add.w	d2,d2
 		lea	(v_player).w,a1
-		btst	#1,obStatus(a1)	; is Sonic in the air?
+		btst	#staAir,obStatus(a1)	; is Sonic in the air?
 		bne.s	@leave		; if yes, branch
 		move.w	obX(a1),d0
 		sub.w	obX(a0),d0
@@ -27,8 +27,8 @@ SolidObject:
 		bcs.s	@stand		; if not, branch
 
 	@leave:
-		bclr	#3,obStatus(a1)	; clear Sonic's standing flag
-		bclr	#3,obStatus(a0)	; clear object's standing flag
+		bclr	#staOnObj,obStatus(a1)	; clear Sonic's standing flag
+		bclr	#staOnObj,obStatus(a0)	; clear object's standing flag
 		clr.b	obSolid(a0)
 		moveq	#0,d4
 		rts	
@@ -56,8 +56,8 @@ SolidObject71:				; XREF: Obj71_Solid
 		bcs.s	@stand
 
 	@leave:
-		bclr	#3,obStatus(a1)
-		bclr	#3,obStatus(a0)
+		bclr	#staOnObj,obStatus(a1)
+		bclr	#staOnObj,obStatus(a0)
 		clr.b	obSolid(a0)
 		moveq	#0,d4
 		rts	

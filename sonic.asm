@@ -227,7 +227,7 @@ CheckSumCheck:
 		andi.b	#$C0,d0
 		move.b	d0,(v_megadrive).w ; get region setting
 		move.l	#'init',(v_init).w ; set flag so checksum won't run again
-	else
+	endc	;end Skip Check Sum Check
 		lea	($FFFFFE00).w,a6
 		moveq	#0,d7
 		move.w	#$7F,d6
@@ -238,7 +238,6 @@ CheckSumCheck:
 		move.b	($A10001).l,d0
 		andi.b	#$C0,d0
 		move.b	d0,(v_megadrive).w ; get region setting
-	endc	;end Skip Check Sum Check
 
 GameInit:
 		lea	($FF0000).l,a6
