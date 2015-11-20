@@ -35,13 +35,14 @@ M_Card_LZ:	dc.b 9			; LABYRINTH
 		dc.b $F8, 5, 0,	$42, $24
 		dc.b $F8, 5, 0,	$1C, $34
 		even
-M_Card_MZ:	dc.b 6			; MARBLE
-		dc.b $F8, 5, 0,	$2A, $CF
-		dc.b $F8, 5, 0,	0, $E0
-		dc.b $F8, 5, 0,	$3A, $F0
-		dc.b $F8, 5, 0,	4, 0
-		dc.b $F8, 5, 0,	$26, $10
-		dc.b $F8, 5, 0,	$10, $20
+M_Card_MZ:	dc.b 7			; MARBLE
+		dc.b $F8, 1, 0, $7E, $C7
+		dc.b $F8, 5, 0, $2A, $CF
+		dc.b $F8, 5, 0, 0, $E0
+		dc.b $F8, 5, 0, $3A, $F0
+		dc.b $F8, 5, 0, 4, 0
+		dc.b $F8, 5, 0, $26, $10
+		dc.b $F8, 5, 0, $10, $20
 		even
 M_Card_SLZ:	dc.b 9			; STAR LIGHT
 		dc.b $F8, 5, 0,	$3E, $B4
@@ -93,20 +94,24 @@ M_Card_Act2:	dc.b 2			; ACT 2
 M_Card_Act3:	dc.b 2			; ACT 3
 		dc.b 4,	$C, 0, $53, $EC
 		dc.b $F4, 6, 0,	$60, 8
-M_Card_Oval:	dc.b $D			; Oval
+M_Card_Oval:	dc.b $11		; Oval
 		dc.b $E4, $C, 0, $70, $F4
-		dc.b $E4, 2, 0,	$74, $14
-		dc.b $EC, 4, 0,	$77, $EC
-		dc.b $F4, 5, 0,	$79, $E4
-		dc.b $14, $C, $18, $70,	$EC
-		dc.b 4,	2, $18,	$74, $E4
+		dc.b $E4, 2, 0, $74, $14
+		dc.b $EC, 4, 0, $77, $EC
+		dc.b $EC, 0, 0, $7C, $FC
+		dc.b $EC, 4, 0, $7C, 4
+		dc.b $F4, 5, 0, $79, $E4
+		dc.b $F4, 4, 0, $7C, $F4
+		dc.b $F4, 4, 0, $7C, 4
+		dc.b $14, $C, $18, $70, $EC
+		dc.b 4, 2, $18, $74, $E4
 		dc.b $C, 4, $18, $77, 4
 		dc.b $FC, 5, $18, $79, $C
-		dc.b $EC, 8, 0,	$7D, $FC
-		dc.b $F4, $C, 0, $7C, $F4
-		dc.b $FC, 8, 0,	$7C, $F4
-		dc.b 4,	$C, 0, $7C, $EC
-		dc.b $C, 8, 0, $7C, $EC
+		dc.b $FC, 4, 0, $7C, $F4
+		dc.b $FC, 1, 0, $7C, 4
+		dc.b $C, 4, 0, $7C, $EC
+		dc.b 4, 4, 0, $7C, $EC
+		dc.b 4, 1, 0, $7C, $FC
 		even
 M_Card_FZ:	dc.b 5			; FINAL
 		dc.b $F8, 5, 0,	$14, $DC
@@ -115,6 +120,7 @@ M_Card_FZ:	dc.b 5			; FINAL
 		dc.b $F8, 5, 0,	0, 4
 		dc.b $F8, 5, 0,	$26, $14
 		even
+
 ; ---------------------------------------------------------------------------
 ; Sprite mappings - "SONIC HAS PASSED" title card
 ; ---------------------------------------------------------------------------
