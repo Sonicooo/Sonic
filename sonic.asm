@@ -6717,23 +6717,7 @@ Sonic_Control:	; Routine 2
 		move.b	#id_Roll,obAnim(a0) ; use "jumping" animation
 	
 	@skip:
-		;Mercury Wall Jump Smoke Puff
-		;USES Smoke Puff
-	;	move.b	(v_framebyte).w,d0
-	;	andi.b	#7,d0
-	;	cmpi.b	#7,d0
-	;	bne.s	@nodec
-	;create puff
-	;	bsr.w	FindFreeObj
-	;	bne.s	@nodec
-	;	move.b	#id_SmokePuff,0(a1) ; load missile object
-	;	move.w	obX(a0),obX(a1)
-	;	move.w	obY(a0),obY(a1)
-	;	addi.w	#$1C,obY(a1)
-	;	move.b	#1,obSubtype(a1)
-	;	;end Wall Jump Smoke Puff
-		
-	@nodec:
+
 	endc	;end Wall Jump
 	
 		tst.w	(f_debugmode).w	; is debug cheat enabled?
@@ -6850,10 +6834,10 @@ Sonic_MdJump:				; XREF: Sonic_Modes
 	@done:
 	else
 		btst	#staWater,obStatus(a0)
-		beq.s	loc_12E5C
+		beq.s	@contMode
 		subi.w	#$28,obVelY(a0)
 
-loc_12E5C:
+@contMode:
 	endc	;end Wall Jump
 	
 		bsr.w	Sonic_JumpAngle

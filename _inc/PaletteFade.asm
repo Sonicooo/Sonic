@@ -37,7 +37,7 @@ PalFadeIn_Alt:				; start position and size are already set
 		bsr.w	WaitForVBla
 	if CorrectedFading=1
 		bchg	#$00,d6					; MJ: change delay counter
-		beq	@mainloop				; MJ: if null, delay a frame
+		beq.s	@mainloop				; MJ: if null, delay a frame
 	endc
 		bsr.s	FadeIn_FromBlack
 	if CorrectedFading=1
@@ -100,17 +100,17 @@ FadeIn_AddColour:			; XREF: FadeIn_FromBlack
 		andi.b	#$0E,d2					; MJ: get only red
 		move.w	(a0),d3					; MJ: load current colour in buffer
 		cmp.b	d5,d4					; MJ: is it time for blue to fade?
-		bhi	@noblue					; MJ: if not, branch
+		bhi.s	@noblue					; MJ: if not, branch
 		addi.w	#$0200,d3				; MJ: increase blue
  
 @noblue:
 		cmp.b	d1,d4					; MJ: is it time for green to fade?
-		bhi	@nogreen				; MJ: if not, branch
+		bhi.s	@nogreen				; MJ: if not, branch
 		addi.b	#$20,d3					; MJ: increase green
  
 @nogreen:
 		cmp.b	d2,d4					; MJ: is it time for red to fade?
-		bhi	@nored					; MJ: if not, branch
+		bhi.s	@nored					; MJ: if not, branch
 		addq.b	#$02,d3					; MJ: increase red
  
 @nored:
@@ -173,7 +173,7 @@ PaletteFadeOut:
 		bsr.w	WaitForVBla
 	if CorrectedFading=1
 		bchg	#$00,d6					; MJ: change delay counter
-		beq	@mainloop				; MJ: if null, delay a frame
+		beq.s	@mainloop				; MJ: if null, delay a frame
 	endc
 		bsr.s	FadeOut_ToBlack
 		bsr.w	RunPLC
@@ -219,17 +219,17 @@ FadeOut_DecColour:			; XREF: FadeOut_ToBlack
 		move.b	d1,d2					; MJ: load green and red
 		move.b	d1,d3					; MJ: load red
 		andi.w	#$0E00,d1				; MJ: get only blue
-		beq	@noblue					; MJ: if blue is finished, branch
+		beq.s	@noblue					; MJ: if blue is finished, branch
 		subi.w	#$0200,d5				; MJ: decrease blue
  
 @noblue:
 		andi.w	#$00E0,d2				; MJ: get only green (needs to be word)
-		beq	@nogreen				; MJ: if green is finished, branch
+		beq.s	@nogreen				; MJ: if green is finished, branch
 		subi.b	#$20,d5					; MJ: decrease green
  
 @nogreen:
 		andi.b	#$0E,d3					; MJ: get only red
-		beq	@nored					; MJ: if red is finished, branch
+		beq.s	@nored					; MJ: if red is finished, branch
 		subq.b	#$02,d5					; MJ: decrease red
  
 @nored:
