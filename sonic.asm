@@ -2847,12 +2847,10 @@ Level_MainLoop:
 			tst.w   (f_restart).w
 			bne     GM_Level
 		endc
-	if DontFreezeOnDeath=0
 		tst.w	(v_debuguse).w	; is debug mode being used?
 		bne.s	Level_DoScroll	; if yes, branch
 		cmpi.b	#6,(v_player+obRoutine).w ; has Sonic just died?
 		bcc.s	Level_SkipScroll ; if yes, branch
-	endc
 
 	Level_DoScroll:
 		bsr.w	DeformLayers
@@ -5899,10 +5897,8 @@ ExecuteObjects:				; XREF: GM_Title; et al
 		lea	(v_objspace).w,a0 ; set address for object RAM
 		moveq	#$7F,d7
 		moveq	#0,d0
-	if DontFreezeOnDeath=0
 		cmpi.b	#6,(v_player+obRoutine).w
 		bcc.s	loc_D362
-	endc
 
 loc_D348:
 		move.b	(a0),d0		; load object number from RAM

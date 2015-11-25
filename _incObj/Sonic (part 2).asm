@@ -71,12 +71,6 @@ locret_13860:
 
 Sonic_Death:	; Routine 6
 
-	if DontFreezeOnDeath=1
-		clr.w	(v_scrshiftx).w
-		clr.b	(v_invinc).w
-		clr.b	(v_shield).w
-	endc
-
 	if DashCDActive=1 ;Mercury Dash CD
 		bclr	#staDash,obStatus2(a0)	; clear Dash flag
 	endc	;end Dash CD

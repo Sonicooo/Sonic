@@ -397,11 +397,6 @@ EndingCreditsSndTest: = 0
 ; Date: 2015-11-7 (Nov)
 NoHUDInEnding: = 1
 
-; Name: Don't Freeze On Death
-; Function: Prevents the game from freezing on death.
-; Date: 2015-11-8 (Nov)
-DontFreezeOnDeath: = 1
-
 ; Name: Ring Cap
 ; Function: Caps the ring counter at 999 rings.
 ; Date: 2015-11-8 (Nov)

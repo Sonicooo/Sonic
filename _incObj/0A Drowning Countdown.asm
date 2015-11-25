@@ -253,9 +253,7 @@ Drown_Countdown:; Routine $A
 		move.w	#0,obVelX(a0)
 		move.w	#0,obInertia(a0)
 		move.b	#$A,obRoutine(a0)	; force the character to drown
-	if DontFreezeOnDeath=0
 		move.b	#1,(f_nobgscroll).w
-	endc
 		move.b	#0,(f_timecount).w	; stop the timer immediately
 		movea.l	(sp)+,a0
 		rts	

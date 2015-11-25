@@ -10,10 +10,8 @@ LZWaterFeatures:			; XREF: GM_Level
 			tst.b   (f_nobgscroll).w
 			bne.s	@setheight
 		endc
-	if DontFreezeOnDeath=0
 		cmpi.b	#6,(v_player+obRoutine).w ; has Sonic just died?
 		bcc.s	@setheight	; if yes, skip other effects
-	endc
 
 		bsr.w	LZWindTunnels
 		bsr.w	LZWaterSlides

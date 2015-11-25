@@ -16,15 +16,8 @@ loc_628E:
 		clr.w	(v_bgscroll2).w
 		clr.w	(v_bgscroll3).w
 		clr.w	($FFFFF75A).w
-	if DontFreezeOnDeath=1
-		cmpi.b	#$6,(v_player+obRoutine).w	; is Sonic dead?
-		bcc.s	@skipscroll	; if yes, branch
-	endc
 		bsr.w	ScrollHoriz
 		bsr.w	ScrollVertical
-	if DontFreezeOnDeath=1
-	@skipscroll:
-	endc
 		bsr.w	DynamicLevelEvents
 		move.w	(v_screenposy).w,(v_scrposy_dup).w
 		move.w	($FFFFF70C).w,($FFFFF618).w
