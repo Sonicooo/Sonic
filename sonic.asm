@@ -5849,8 +5849,9 @@ loc_8B48:
 		include	"_incObj\7F SS Result Chaos Emeralds.asm"
 
 		include	"_maps\Title Cards.asm"
-
 		include	"_maps\Game Over.asm"
+		include "_maps\Title Cards - Got Through.asm"
+		include "_maps\Title Cards - Special Stage Results.asm"
 
 		include	"_maps\SS Result Chaos Emeralds.asm"
 
