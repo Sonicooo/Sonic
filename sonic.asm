@@ -488,7 +488,7 @@ VBlank:					; XREF: Vectors
 
 		move.w	#$700,d0
 	VBla_WaitPAL:
-		dbf	d0,VBla_WaitPAL
+		dbf	d0,VBla_WaitPAL	; waste some time here
 
 	VBla_NotPAL:
 		move.b	(v_vbla_routine).w,d0

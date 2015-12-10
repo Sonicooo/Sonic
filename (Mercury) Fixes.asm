@@ -370,7 +370,7 @@ LevSelMus: = 1
 ; Function: Ports the S2B level select features to Sonic 1's level select.
 ; Date: 2015-10-30 (Oct)
 S2BLevSel: = 1	; base - Start is required to start a level, pressing Start on Sound Test brings you back to the Sega screen
-	SndTstAScroll: = S2BLevSel*0	; allows scrolling the sound test value by 16 ($10) with A - can cause errors!
+	SndTstAScroll: = S2BLevSel*1	; allows scrolling the sound test value by 16 ($10) with A - can cause errors!
 
 ; Name: Flash on Cheat Enter
 ; Function: Makes the screen flash instead of playing a ring sound on succesfully entering a cheat code in the title screen.
