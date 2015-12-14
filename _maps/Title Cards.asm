@@ -85,33 +85,13 @@ M_Card_Zone:	dc.b 4			; ZONE
 		dc.b $F8, 5, 0,	$2E, 0
 		dc.b $F8, 5, 0,	$10, $10
 		even
-M_Card_Act1:	dc.b 2			; ACT 1
-		dc.b 4,	$C, 0, $53, $EC
-		dc.b $F4, 2, 0,	$57, $C
-M_Card_Act2:	dc.b 2			; ACT 2
-		dc.b 4,	$C, 0, $53, $EC
-		dc.b $F4, 6, 0,	$5A, 8
-M_Card_Act3:	dc.b 2			; ACT 3
-		dc.b 4,	$C, 0, $53, $EC
-		dc.b $F4, 6, 0,	$60, 8
-M_Card_Oval:	dc.b $11		; Oval
-		dc.b $E4, $C, 0, $70, $F4
-		dc.b $E4, 2, 0, $74, $14
-		dc.b $EC, 4, 0, $77, $EC
-		dc.b $EC, 0, 0, $7C, $FC
-		dc.b $EC, 4, 0, $7C, 4
-		dc.b $F4, 5, 0, $79, $E4
-		dc.b $F4, 4, 0, $7C, $F4
-		dc.b $F4, 4, 0, $7C, 4
-		dc.b $14, $C, $18, $70, $EC
-		dc.b 4, 2, $18, $74, $E4
-		dc.b $C, 4, $18, $77, 4
-		dc.b $FC, 5, $18, $79, $C
-		dc.b $FC, 4, 0, $7C, $F4
-		dc.b $FC, 1, 0, $7C, 4
-		dc.b $C, 4, 0, $7C, $EC
-		dc.b 4, 4, 0, $7C, $EC
-		dc.b 4, 1, 0, $7C, $FC
+M_Card_Act1:	dc.b 1			; ACT 1
+		dc.b $F4, 7, 0, $52, $C
+M_Card_Act2:	dc.b 1			; ACT 2
+		dc.b $F4, $B, 0, $5A, $C
+M_Card_Act3:	dc.b 1			; ACT 3
+		dc.b $F4, $B, 0, $70, $C
+M_Card_Oval:	dc.b 0			; Oval
 		even
 M_Card_FZ:	dc.b 5			; FINAL
 		dc.b $F8, 5, 0,	$14, $DC
